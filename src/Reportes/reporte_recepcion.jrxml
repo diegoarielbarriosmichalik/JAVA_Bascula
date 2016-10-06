@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporte_recepcion" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ec84c6d7-0c70-4089-8931-3401d040c2ca">
+	<property name="ireport.zoom" value="1.4641000000000022"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[select * from reporte_recepcion]]>
+	</queryString>
+	<field name="id_reporte_recepcion" class="java.lang.Integer"/>
+	<field name="numero" class="java.lang.Integer"/>
+	<field name="fecha" class="java.lang.String"/>
+	<field name="cliente" class="java.lang.String"/>
+	<field name="camion" class="java.lang.String"/>
+	<field name="carreta" class="java.lang.String"/>
+	<field name="chofer" class="java.lang.String"/>
+	<field name="peso_bruto_comp" class="java.lang.Integer"/>
+	<field name="peso_bruto" class="java.math.BigDecimal"/>
+	<field name="peso_tara_comp" class="java.lang.Integer"/>
+	<field name="peso_tara" class="java.math.BigDecimal"/>
+	<field name="peso_neto" class="java.math.BigDecimal"/>
+	<variable name="Total_neto" class="java.lang.Number" calculation="Sum">
+		<variableExpression><![CDATA[$F{peso_neto}]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="83" splitType="Stretch">
+			<textField>
+				<reportElement x="679" y="0" width="80" height="20" uuid="508344f4-9a2d-43ea-9e67-1c6df565170d"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="759" y="0" width="40" height="20" uuid="ac0dd6e2-2624-41d1-acc0-43588cd28528"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="3" y="0" width="796" height="41" uuid="fedb83fc-b590-4da5-9f8e-6511f3dbef50"/>
+				<textElement textAlignment="Center">
+					<font size="28" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Informe]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="47" width="42" height="15" uuid="ce714133-64b6-493f-afbd-3ba40b8a0bb9"/>
+				<textElement>
+					<font isBold="true" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Tipo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="3" y="62" width="42" height="15" uuid="955465e9-28ba-4fea-b528-801bc283dfe1"/>
+				<textElement>
+					<font isBold="true" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Fecha:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="45" y="47" width="397" height="15" uuid="5994db0f-e333-4fb7-b14f-6de5d2bf94af"/>
+				<text><![CDATA[Listado de recepción ]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy HH.mm.ss">
+				<reportElement x="45" y="62" width="397" height="15" uuid="05216a24-75ab-4674-a4d3-1824444bd7fc"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="122" y="35" width="557" height="1" uuid="ccac23c8-8268-4ec8-b896-3ed7e0701c99"/>
+			</line>
+			<line>
+				<reportElement x="3" y="82" width="796" height="1" uuid="8ec8ebbd-e87e-4b52-b46c-4725c304fa78"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="16" splitType="Stretch">
+			<staticText>
+				<reportElement x="5" y="1" width="29" height="13" uuid="219c6d65-daa3-4f4d-8a4b-061dc8b0cfa5"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nº]]></text>
+			</staticText>
+			<line>
+				<reportElement x="4" y="15" width="795" height="1" uuid="23b8365f-4d30-4d72-82e3-8dc2b92bdeed"/>
+			</line>
+			<staticText>
+				<reportElement x="35" y="1" width="76" height="13" uuid="6d8573d3-5721-4ac7-bba0-ba8b519bb412"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="121" y="1" width="124" height="13" uuid="19ab421b-a210-43bf-b996-14923b94ed48"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cliente]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="258" y="1" width="42" height="13" uuid="33dfbd3b-d32e-4f8b-9530-ebe940425bc3"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Camión]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="335" y="1" width="81" height="13" uuid="e2a348ad-a65f-4af2-8dfa-4ef9aa6f92e1"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Transportadora]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="442" y="1" width="91" height="13" uuid="b17ba338-87e3-488b-bed7-48fd7125f03a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Chofer]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="623" y="1" width="56" height="13" uuid="04331bf0-e2c9-4134-91e4-7ebb292676d8"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Peso Bruto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="679" y="1" width="56" height="13" uuid="1354d09e-a414-4cf4-8656-eee3073cb32e"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Peso Tara]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="735" y="1" width="56" height="13" uuid="212d8df8-79a5-483d-8557-60ba9f709f76"/>
+				<textElement textAlignment="Center">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Peso Neto]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="13" splitType="Stretch">
+			<textField>
+				<reportElement x="5" y="1" width="29" height="12" uuid="6862c051-b63b-4be4-affe-384b2784e21d"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{numero}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="32" y="1" width="79" height="12" uuid="f2c84f09-6914-470d-8c55-cbba1abd201e"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fecha}.trim()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="122" y="1" width="123" height="12" uuid="da9d0aff-72ed-46bf-b0c6-4d33435bd780"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cliente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="264" y="1" width="41" height="12" uuid="03d8f5ec-e2d1-40c1-9abc-068203cf1cc9"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{camion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="357" y="1" width="52" height="12" uuid="f5b2b5a5-3528-4e69-9e2d-05644eb52e31"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{carreta}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0">
+				<reportElement x="735" y="0" width="56" height="12" uuid="8cda5ee6-e397-4b8f-9075-5627190a6de0"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{peso_neto}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0">
+				<reportElement x="679" y="0" width="56" height="12" uuid="920192be-c65e-44b0-8f78-998cfc2b00dc"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{peso_tara}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0">
+				<reportElement x="623" y="0" width="56" height="12" uuid="0edd5c9e-0e75-47ee-bcf7-186b656ed338"/>
+				<textElement textAlignment="Center">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{peso_bruto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="442" y="1" width="91" height="12" uuid="69d28dce-8214-4464-83d2-6c4120cb0627"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{chofer}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="57" splitType="Stretch">
+			<staticText>
+				<reportElement x="565" y="17" width="114" height="20" uuid="7a429237-5284-49c0-b0b5-eab38380ac8a"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Neto (Kg)]]></text>
+			</staticText>
+			<textField pattern="#,##0;-#,##0">
+				<reportElement x="679" y="17" width="112" height="20" uuid="23a02611-5bda-402f-bec2-978fabc44813"/>
+				<textElement textAlignment="Center">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{Total_neto}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="3" y="0" width="796" height="1" uuid="26f6fa54-b004-4aa3-85c5-6ca26061026f"/>
+			</line>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
